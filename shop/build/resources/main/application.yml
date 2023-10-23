@@ -1,0 +1,59 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: spring-shop
+
+  devtools:
+    restart:
+      enabled: true
+
+    livereload:
+      enabled: true
+
+  thymeleaf:
+    cache: false
+
+####################################
+# Mysql Setting
+####################################
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shop_b?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: 1234
+
+####################################
+# JPA 설정
+####################################
+  jpa:
+    open-in-view: true      #
+    hibernate:
+      ddl-auto: create      # create, update, ...
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy # 카멜표기를 스네이크 표기로 변환
+    show-sql: true          # SQL 구문 보이기
+    properties:
+      hibernate:
+        format_sql: true    # 포멧 처리해서 보이기
+    database-platform: org.hibernate.dialect.MySQL8Dialect  # MySQL8 버전 사용
+
+####################################
+# log Setting
+####################################
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace  # 물음표에 바인드 파라미터 출력
+
+####################################
+# security Setting
+####################################
+  security:
+    user:
+      name: test@test.com
+      password: 1111
